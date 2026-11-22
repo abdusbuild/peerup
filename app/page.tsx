@@ -58,7 +58,7 @@ function PlayButton({ className = "", light = false }: { className?: string; lig
       data-magnetic
       data-cursor="Install"
       className={
-        "group inline-flex items-center gap-3 rounded-full px-7 py-4 text-[15px] font-medium transition-colors " +
+        "group inline-flex items-center gap-2.5 whitespace-nowrap rounded-full px-5 py-4 text-sm font-medium transition-colors min-[360px]:gap-3 min-[360px]:px-7 min-[360px]:text-[15px] " +
         (light ? "bg-brand-500 text-white hover:bg-brand-600 " : "bg-brand-600 text-white hover:bg-brand-700 ") +
         className
       }
@@ -138,7 +138,7 @@ export default function Home() {
       <header className="fixed inset-x-0 top-0 z-50 bg-paper/75 backdrop-blur-xl">
         <nav className="mx-auto flex h-[72px] max-w-[1440px] items-center justify-between px-5 md:px-8">
           <a href="#top" aria-label="PeerUp home"><Logo className="h-8 w-auto min-[360px]:h-10 md:h-12" /></a>
-          <div className="hidden items-center gap-9 text-[17px] font-semibold text-ink md:flex">
+          <div className="hidden items-center gap-7 text-[17px] font-semibold text-ink lg:flex xl:gap-9">
             <a href="#practice" className="transition hover:text-brand-600">Practice</a>
             <a href="#feedback" className="transition hover:text-brand-600">Feedback</a>
             <a href="#compete" className="transition hover:text-brand-600">Compete</a>
