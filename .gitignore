@@ -42,3 +42,5 @@ next-env.d.ts
 
 # raw WhatsApp screenshots (converted copies live in public/screens)
 WhatsApp Image *.jpeg
+
+.vercel
