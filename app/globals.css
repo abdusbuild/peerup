@@ -1,0 +1,94 @@
+@import "tailwindcss";
+@import "@fontsource-variable/funnel-display";
+@import "@fontsource-variable/inter";
+
+/* PeerUp brand colours — from peerup.co.in (logo indigo #6266BC, gradient #4349AA→#787BCB, accent #F19101) */
+@theme {
+  --color-brand-50: #f4f4fb;
+  --color-brand-100: #e9eaf7;
+  --color-brand-200: #d3d5ef;
+  --color-brand-300: #b1b3e2;
+  --color-brand-400: #787bcb;   /* logo gradient end / theme colour */
+  --color-brand-500: #6266bc;   /* primary — wordmark */
+  --color-brand-600: #4349aa;   /* logo gradient start */
+  --color-brand-700: #363b8c;
+  --color-ink: #23254f;          /* deep indigo text (was neutral #2b2b2b) */
+  --color-ink-2: #1e2160;        /* deep indigo for dark cards */
+  --color-paper: #f3f3fb;        /* page background (cool off-white) */
+  --color-muted: #5f6189;        /* indigo-grey body copy */
+  --color-amber: #f19101;        /* peerup.co.in orange accent */
+
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Funnel Display Variable", "Inter Variable", ui-sans-serif, sans-serif;
+}
+
+html { background: var(--color-paper); }
+body {
+  font-family: var(--font-sans);
+  font-size: 18px;
+  color: var(--color-ink);
+  background: var(--color-paper);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Display type: light weight, tight tracking, line-height 1 */
+.display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+/* Lenis */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+.brand-gradient { background: linear-gradient(180deg, var(--color-brand-600), var(--color-brand-400)); }
+
+/* split text */
+/* each word is a mask; its inner span rises into view. Padding keeps ascenders/descenders unclipped. */
+.split-w {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: clip;
+  vertical-align: top;
+  padding: 0.1em 0.04em 0.16em;
+  margin: -0.1em -0.04em -0.16em;
+}
+.split-i { display: inline-block; will-change: transform; }
+.split-c { display: inline-block; }
+
+/* big edge-faded marquee */
+@keyframes marquee { to { transform: translateX(-50%); } }
+.marquee-track { display: flex; width: max-content; animation: marquee 45s linear infinite; }
+.marquee:hover .marquee-track { animation-play-state: paused; }
+.marquee-reverse { animation-direction: reverse; }
+.edge-fade-soft {
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.edge-fade {
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 25%, #000 75%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 25%, #000 75%, transparent);
+}
+
+/* rotating circular badge */
+@keyframes spin { to { transform: rotate(360deg); } }
+.spin-slow { animation: spin 18s linear infinite; }
+
+@media (hover: hover) and (pointer: fine) {
+  .has-cursor, .has-cursor a, .has-cursor button { cursor: none; }
+}
+
+@keyframes float-y { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-10px) } }
+.float-y { animation: float-y 5s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track, .float-y, .spin-slow { animation: none !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee.edge-fade-soft { overflow-x: auto; }
+}
